@@ -1,0 +1,22 @@
+.emoji-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.emoji-container img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.emoji-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.emoji-item {
+  font-size: 48px;
+  margin: 10px;
+}
