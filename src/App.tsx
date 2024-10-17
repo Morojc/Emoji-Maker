@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonApp, IonContent, IonMenu, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, IonFooter, IonInput, setupIonicReact } from '@ionic/react';
-import { closeOutline, menuOutline, diamondOutline, attachOutline, sendOutline } from 'ionicons/icons';
+import { closeOutline, attachOutline, sendOutline, refreshOutline } from 'ionicons/icons';
 import { menuController } from '@ionic/core';
 
 /* Core CSS required for Ionic components to work properly */
@@ -51,6 +51,11 @@ const App: React.FC = () => {
     // Implement file upload logic here
   };
 
+  const handleReset = () => {
+    console.log('Reset clicked');
+    // Implement reset functionality here
+  };
+
   return (
     <IonApp>
       <IonMenu contentId="main" className="simple-menu" side="start" type="overlay">
@@ -81,16 +86,26 @@ const App: React.FC = () => {
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonMenuButton>
-                <IonIcon icon={menuOutline} />
+              <IonMenuButton className="custom-menu-button creative-menu-button">
+                <div className="menu-icon">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
               </IonMenuButton>
             </IonButtons>
             <IonTitle className="ion-text-center">
-              <IonButton className="premium-button" size="small">
-                <IonIcon icon={diamondOutline} className="premium-icon" />
-                <span className="premium-text">Premium</span>
-              </IonButton>
+              {/* You can add a title here if needed */}
             </IonTitle>
+            <IonButtons slot="end">
+              <IonButton onClick={handleReset} className="reset-button">
+                <div className="reset-icon">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                  </svg>
+                </div>
+              </IonButton>
+            </IonButtons>
           </IonToolbar>
         </IonHeader>
       </IonContent>

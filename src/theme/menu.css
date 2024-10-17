@@ -716,3 +716,370 @@ ion-page {
 .input-container:focus-within::before {
   opacity: 0.3;
 }
+
+/* Custom Menu Button Styles */
+.custom-menu-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --background: transparent;
+  --color: var(--ion-color-primary);
+}
+
+.menu-icon {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--ion-color-primary);
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.menu-icon span:nth-child(1) {
+  top: 0px;
+}
+
+.menu-icon span:nth-child(2) {
+  top: 8px;
+  width: 75%;
+}
+
+.menu-icon span:nth-child(3) {
+  top: 16px;
+}
+
+.custom-menu-button.menu-button-active .menu-icon span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.custom-menu-button.menu-button-active .menu-icon span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.custom-menu-button.menu-button-active .menu-icon span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+/* Add a pulsing animation to the menu icon */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.custom-menu-button:not(.menu-button-active) .menu-icon {
+  animation: pulse 2s infinite;
+}
+
+/* Add these styles for the new edit button */
+.edit-button {
+  --background: transparent;
+  --box-shadow: none;
+  --color: var(--ion-color-primary);
+}
+
+.edit-icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.pencil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 4px;
+  height: 20px;
+  background: var(--ion-color-primary);
+}
+
+.pencil-tip {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 6px solid var(--ion-color-primary);
+}
+
+.pencil-eraser {
+  position: absolute;
+  top: -4px;
+  left: -1px;
+  width: 6px;
+  height: 4px;
+  background: #ff6b6b;
+  border-radius: 2px 2px 0 0;
+}
+
+.edit-lines {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 16px;
+}
+
+.edit-lines span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--ion-color-primary);
+  margin-bottom: 5px;
+  transform-origin: right;
+  animation: editLine 2s infinite;
+}
+
+.edit-lines span:nth-child(2) {
+  width: 75%;
+}
+
+.edit-lines span:nth-child(3) {
+  width: 50%;
+}
+
+@keyframes editLine {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.8);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.edit-button:hover .pencil {
+  animation: wiggle 0.5s infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-40deg);
+  }
+}
+
+/* Add these styles for the new clear button */
+.clear-button {
+  --background: transparent;
+  --box-shadow: none;
+  --color: var(--ion-color-primary);
+}
+
+.clear-icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.clear-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--ion-color-primary);
+  border-radius: 50%;
+  animation: rotate 10s linear infinite;
+}
+
+.clear-slash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 2px;
+  background-color: var(--ion-color-primary);
+  transform: translate(-50%, -50%) rotate(45deg);
+  animation: flash 2s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.clear-button:hover .clear-icon {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+/* Add these styles for the reset button */
+.reset-button {
+  --color: #000000;
+  --background: transparent;
+  --border-style: none;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  width: 48px;
+  height: 48px;
+}
+
+.reset-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: #000000;
+  transition: transform 0.3s ease;
+}
+
+.reset-button:hover .reset-icon svg {
+  transform: rotate(180deg);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.reset-button:active .reset-icon svg {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Updated Custom Menu Button Styles */
+.custom-menu-button.creative-menu-button {
+  --background: transparent;
+  --color: transparent;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+.creative-menu-button .menu-icon {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.creative-menu-button .menu-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.creative-menu-button .menu-icon span:nth-child(1) {
+  top: 0px;
+}
+
+.creative-menu-button .menu-icon span:nth-child(2) {
+  top: 8px;
+  width: 75%;
+}
+
+.creative-menu-button .menu-icon span:nth-child(3) {
+  top: 16px;
+}
+
+.creative-menu-button.menu-button-active .menu-icon span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.creative-menu-button.menu-button-active .menu-icon span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.creative-menu-button.menu-button-active .menu-icon span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+/* Add a subtle glow effect to the menu icon */
+.creative-menu-button .menu-icon::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(135deg, rgba(110, 142, 251, 0.4), rgba(167, 119, 227, 0.4));
+  border-radius: 15px;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.creative-menu-button:hover .menu-icon::after {
+  opacity: 1;
+}
