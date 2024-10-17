@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IonApp, IonContent, IonMenu, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, IonFooter, IonInput, setupIonicReact } from '@ionic/react';
 import { closeOutline, attachOutline, sendOutline, refreshOutline } from 'ionicons/icons';
 import { menuController } from '@ionic/core';
+import './App.css';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -25,9 +26,15 @@ import './theme/menu.css';
 
 setupIonicReact();
 
+interface ChatMessage {
+  role: 'user' | 'ai';
+  content: string;
+}
+
 const App: React.FC = () => {
   const [selectedPage, setSelectedPage] = useState('home');
   const [inputText, setInputText] = useState('');
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
 
   const menuItems = [
     { title: 'Home', route: '/home' },
@@ -41,19 +48,30 @@ const App: React.FC = () => {
     menuController.close();
   };
 
-  const handleGenerateMessage = () => {
-    console.log('Generating message:', inputText);
+  const handleSendMessage = () => {
+    if (inputText.trim() === '') return;
+
+    const newUserMessage: ChatMessage = {
+      role: 'user',
+      content: inputText,
+    };
+
+    setChatHistory(prevHistory => [...prevHistory, newUserMessage]);
+
+    // Simulate AI response (replace this with actual AI integration later)
+    setTimeout(() => {
+      const aiResponse: ChatMessage = {
+        role: 'ai',
+        content: `AI response to: "${inputText}"`,
+      };
+      setChatHistory(prevHistory => [...prevHistory, aiResponse]);
+    }, 1000);
+
     setInputText('');
   };
 
-  const handleFileUpload = () => {
-    console.log('File upload clicked');
-    // Implement file upload logic here
-  };
-
   const handleReset = () => {
-    console.log('Reset clicked');
-    // Implement reset functionality here
+    setChatHistory([]);
   };
 
   return (
@@ -108,6 +126,13 @@ const App: React.FC = () => {
             </IonButtons>
           </IonToolbar>
         </IonHeader>
+        <div className="chat-container">
+          {chatHistory.map((message, index) => (
+            <div key={index} className={`chat-message ${message.role}`}>
+              <div className="message-content">{message.content}</div>
+            </div>
+          ))}
+        </div>
       </IonContent>
       <IonFooter>
         <div className="input-container">
@@ -116,11 +141,12 @@ const App: React.FC = () => {
           </IonButton>
           <IonInput
             value={inputText}
-            placeholder="Message"
+            placeholder="Type your message..."
             onIonChange={e => setInputText(e.detail.value!)}
+            onKeyPress={e => e.key === 'Enter' && handleSendMessage()}
             className="message-input"
           ></IonInput>
-          <IonButton fill="clear" className="send-button" onClick={handleGenerateMessage}>
+          <IonButton fill="clear" className="send-button" onClick={handleSendMessage}>
             <IonIcon icon={sendOutline} />
           </IonButton>
         </div>
