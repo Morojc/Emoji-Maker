@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { IonApp, IonContent, IonMenu, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, setupIonicReact } from '@ionic/react';
-import { closeOutline, menuOutline } from 'ionicons/icons';
+import { IonApp, IonContent, IonMenu, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, IonFooter, IonInput, setupIonicReact } from '@ionic/react';
+import { closeOutline, menuOutline, sendOutline } from 'ionicons/icons';
 import { menuController } from '@ionic/core';
 
 /* Core CSS required for Ionic components to work properly */
@@ -27,6 +27,7 @@ setupIonicReact();
 
 const App: React.FC = () => {
   const [selectedPage, setSelectedPage] = useState('home');
+  const [inputText, setInputText] = useState('');
 
   const menuItems = [
     { title: 'Home', route: '/home' },
@@ -38,6 +39,11 @@ const App: React.FC = () => {
   const handleMenuItemClick = (route: string) => {
     setSelectedPage(route.substring(1));
     menuController.close();
+  };
+
+  const handleSendMessage = () => {
+    console.log('Sending message:', inputText);
+    setInputText('');
   };
 
   return (
@@ -78,6 +84,21 @@ const App: React.FC = () => {
           </IonToolbar>
         </IonHeader>
       </IonContent>
+      <IonFooter>
+        <IonToolbar>
+          <IonInput
+            value={inputText}
+            placeholder="Type a message"
+            onIonChange={e => setInputText(e.detail.value!)}
+            className="message-input"
+          ></IonInput>
+          <IonButtons slot="end">
+            <IonButton onClick={handleSendMessage}>
+              <IonIcon icon={sendOutline} />
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonFooter>
     </IonApp>
   );
 };

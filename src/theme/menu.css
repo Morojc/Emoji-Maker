@@ -148,3 +148,22 @@ ion-menu-button {
 ion-content#main {
   --background: #ffffff;
 }
+
+/* Add these styles at the end of your menu.css file */
+
+.message-input {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --placeholder-color: #999;
+}
+
+ion-footer ion-toolbar {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --min-height: 56px;
+}
+
+ion-footer ion-button {
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
