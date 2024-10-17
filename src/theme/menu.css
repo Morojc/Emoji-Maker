@@ -156,20 +156,40 @@ ion-content#main {
 /* Add these styles at the end of your menu.css file */
 
 .message-input {
-  --padding-start: 10px;
-  --padding-end: 10px;
-  --placeholder-color: #999;
+  --background: #f0f0f0;
+  --color: #333333;
+  --placeholder-color: #999999;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  --border-radius: 20px;
+  margin: 8px 0;
+  flex: 1;
 }
 
 ion-footer ion-toolbar {
-  --padding-top: 0;
-  --padding-bottom: 0;
-  --min-height: 56px;
+  --background: transparent;
+  --border-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+ion-footer ion-buttons {
+  margin: 0;
+}
+
+ion-footer ion-input {
+  --background: #f0f0f0;
+  border-radius: 20px;
+  margin: 8px 0;
 }
 
 ion-footer ion-button {
   --padding-start: 10px;
   --padding-end: 10px;
+  --color: #6e8efb;
 }
 
 /* Add these new styles at the end of your menu.css file */
@@ -284,4 +304,407 @@ ion-content#main ion-toolbar {
   --border-width: 0 !important;
   --border-style: none !important;
   box-shadow: none !important;
+}
+
+/* Update the generate button styles */
+.generate-button {
+  --background: transparent;
+  --box-shadow: none;
+  --color: var(--ion-color-primary);
+  width: 44px;
+  height: 44px;
+  margin-right: 8px;
+}
+
+.ai-icon-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ai-icon-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--ion-color-primary);
+  border-radius: 50%;
+  animation: rotate 4s linear infinite;
+}
+
+.ai-icon-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  background-color: rgba(var(--ion-color-primary-rgb), 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite;
+}
+
+.ai-icon-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 40%;
+  background-color: var(--ion-color-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 5px var(--ion-color-primary);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px var(--ion-color-primary);
+  }
+}
+
+/* Add these styles for the upload button */
+.upload-button {
+  --color: var(--ion-color-medium);
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+.upload-button ion-icon {
+  font-size: 24px;
+}
+
+/* New AI Send Icon Styles */
+.generate-button {
+  --background: transparent;
+  --box-shadow: none;
+  width: 44px;
+  height: 44px;
+  margin-right: 8px;
+}
+
+.ai-send-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ai-send-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #3880ff;
+  border-radius: 50%;
+  animation: orbit 4s linear infinite;
+}
+
+.ai-send-planet {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #3880ff;
+  border-radius: 50%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: orbit 4s linear infinite;
+}
+
+.ai-send-rocket {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  animation: rocketMove 2s ease-in-out infinite;
+}
+
+.rocket-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: rotate(-45deg);
+}
+
+.rocket-window {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rocket-fin {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ff6b6b;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rocketMove {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1.1);
+  }
+}
+
+/* New styles for the input container */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 24px;
+  margin: 10px 16px;
+  padding: 4px;
+  border: none;
+  position: relative;
+  z-index: 0;
+  overflow: visible; /* Changed from hidden to visible */
+}
+
+.attach-button,
+.send-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --color: #666;
+  --border-style: none; /* Remove button borders */
+  --background: transparent; /* Ensure transparent background */
+  z-index: 1;
+}
+
+.attach-button ion-icon,
+.send-button ion-icon {
+  font-size: 24px;
+}
+
+.message-input {
+  flex: 1;
+  --background: transparent;
+  --color: #333333;
+  --placeholder-color: #999999;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  margin: 0;
+  --border-style: none; /* Remove input borders */
+  --highlight-color: transparent; /* Remove the highlight on focus */
+}
+
+/* Remove any existing styles for ion-footer that might conflict */
+ion-footer {
+  --ion-toolbar-background: transparent;
+  --ion-toolbar-border-color: transparent;
+  border: none;
+  box-shadow: none !important;
+}
+
+ion-footer::before,
+ion-footer::after {
+  display: none;
+}
+
+/* Remove any possible borders from the toolbar */
+ion-footer ion-toolbar {
+  --border-width: 0;
+  --border-style: none;
+  box-shadow: none !important;
+}
+
+/* Update these styles for the input container and footer */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 24px;
+  margin: 10px 16px;
+  padding: 4px;
+  border: none;
+  box-shadow: none;
+}
+
+ion-footer {
+  --ion-toolbar-background: transparent;
+  --ion-toolbar-border-color: transparent;
+  border: none;
+  box-shadow: none !important;
+}
+
+ion-footer::before,
+ion-footer::after {
+  display: none;
+}
+
+ion-footer ion-toolbar {
+  --border-width: 0;
+  --border-style: none;
+  box-shadow: none !important;
+}
+
+/* Ensure no shadow on the content area that might be overlapping */
+ion-content::part(scroll) {
+  box-shadow: none;
+}
+
+/* Remove any possible shadow from the page root */
+ion-page {
+  box-shadow: none !important;
+}
+
+/* Add this new style for the animated border */
+.input-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #6e8efb, #a777e3, #6e8efb, #a777e3);
+  background-size: 400% 400%;
+  z-index: -1;
+  filter: blur(3px);
+  animation: glowing 8s ease infinite;
+  opacity: 0.3; /* Set a constant low opacity */
+  border-radius: 26px; /* Slightly larger than the container */
+  pointer-events: none; /* Ensure it doesn't interfere with input */
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ensure the input and buttons are above the glow effect */
+.message-input,
+.attach-button,
+.send-button {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove the focus-within effect */
+.input-container:focus-within::before {
+  opacity: 0.3; /* Keep it constant */
+}
+
+/* Update the input container styles */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 24px;
+  margin: 10px 16px;
+  padding: 4px;
+  border: none;
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+}
+
+/* New animated border styles */
+.input-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #6e8efb, #a777e3, #6e8efb, #a777e3);
+  background-size: 400% 400%;
+  z-index: -1;
+  border-radius: 26px;
+  animation: glowing 8s ease infinite;
+  opacity: 0.3;
+  pointer-events: none;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  padding: 2px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ensure the input and buttons are above the glow effect */
+.message-input,
+.attach-button,
+.send-button {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove the focus-within effect if you don't want it */
+.input-container:focus-within::before {
+  opacity: 0.3;
 }

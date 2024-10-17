@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonApp, IonContent, IonMenu, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, IonFooter, IonInput, setupIonicReact } from '@ionic/react';
-import { closeOutline, menuOutline, sendOutline, diamondOutline } from 'ionicons/icons';
+import { closeOutline, menuOutline, diamondOutline, attachOutline, sendOutline } from 'ionicons/icons';
 import { menuController } from '@ionic/core';
 
 /* Core CSS required for Ionic components to work properly */
@@ -41,9 +41,14 @@ const App: React.FC = () => {
     menuController.close();
   };
 
-  const handleSendMessage = () => {
-    console.log('Sending message:', inputText);
+  const handleGenerateMessage = () => {
+    console.log('Generating message:', inputText);
     setInputText('');
+  };
+
+  const handleFileUpload = () => {
+    console.log('File upload clicked');
+    // Implement file upload logic here
   };
 
   return (
@@ -90,19 +95,20 @@ const App: React.FC = () => {
         </IonHeader>
       </IonContent>
       <IonFooter>
-        <IonToolbar>
+        <div className="input-container">
+          <IonButton fill="clear" className="attach-button">
+            <IonIcon icon={attachOutline} />
+          </IonButton>
           <IonInput
             value={inputText}
-            placeholder="Type a message"
+            placeholder="Message"
             onIonChange={e => setInputText(e.detail.value!)}
             className="message-input"
           ></IonInput>
-          <IonButtons slot="end">
-            <IonButton onClick={handleSendMessage}>
-              <IonIcon icon={sendOutline} />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
+          <IonButton fill="clear" className="send-button" onClick={handleGenerateMessage}>
+            <IonIcon icon={sendOutline} />
+          </IonButton>
+        </div>
       </IonFooter>
     </IonApp>
   );
