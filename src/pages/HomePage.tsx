@@ -1,18 +1,31 @@
-import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import React, { useEffect } from 'react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
 
 const HomePage: React.FC = () => {
+  useEffect(() => {
+    console.log('HomePage content rendered');
+  }, []);
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Emoji Generator</IonTitle>
+          <IonTitle>Home Page</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <h2>Welcome to Emoji Generator</h2>
-        <p>Start generating custom emojis based on your descriptions!</p>
-        {/* Add more content or components here */}
+      <IonContent fullscreen>
+        <IonHeader collapse="condense">
+          <IonToolbar>
+            <IonTitle size="large">Home Page</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <div>Welcome to the Home Page!</div>
       </IonContent>
     </IonPage>
   );

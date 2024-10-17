@@ -4,7 +4,7 @@ const replicate = new Replicate({
   auth: process.env.REACT_APP_REPLICATE_API_TOKEN,
 });
 
-export const generateEmoji = async (prompt: string): Promise<string> => {
+export const generateImage = async (prompt: string): Promise<string> => {
   try {
     const output = await replicate.run(
       "fofr/sdxl-emoji:dee76b5afde21b0f01ed7925f0665b7e879c50ee718c5f78a9d38e04d523cc5e",
@@ -30,10 +30,10 @@ export const generateEmoji = async (prompt: string): Promise<string> => {
     if (Array.isArray(output) && output.length > 0) {
       return output[0] as string;
     } else {
-      throw new Error('Failed to generate emoji');
+      throw new Error('Invalid output from Replicate API');
     }
   } catch (error) {
-    console.error('Error generating emoji:', error);
+    console.error('Error calling Replicate API:', error);
     throw error;
   }
 };
