@@ -74,6 +74,12 @@ const App: React.FC = () => {
     setChatHistory([]);
   };
 
+  const suggestionButtons = [
+    { icon: '🎨', text: 'Créer une peinture de style Renaissance' },
+    { icon: '🍳', text: 'Cuisiner sans faire de courses' },
+    // Add more suggestion buttons as needed
+  ];
+
   return (
     <IonApp>
       <IonMenu contentId="main" className="simple-menu" side="start" type="overlay">
@@ -127,11 +133,22 @@ const App: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className="chat-container">
-          {chatHistory.map((message, index) => (
-            <div key={index} className={`chat-message ${message.role}`}>
-              <div className="message-content">{message.content}</div>
+          {chatHistory.length === 0 ? (
+            <div className="suggestion-container">
+              {suggestionButtons.map((button, index) => (
+                <button key={index} className="suggestion-button" onClick={() => setInputText(button.text)}>
+                  <span className="suggestion-icon">{button.icon}</span>
+                  <span className="suggestion-text">{button.text}</span>
+                </button>
+              ))}
             </div>
-          ))}
+          ) : (
+            chatHistory.map((message, index) => (
+              <div key={index} className={`chat-message ${message.role}`}>
+                <div className="message-content">{message.content}</div>
+              </div>
+            ))
+          )}
         </div>
       </IonContent>
       <IonFooter>

@@ -1,9 +1,16 @@
 .chat-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   padding: 1rem;
   overflow-y: auto;
-  height: calc(100% - 56px); /* Adjust based on your header height */
+}
+
+.chat-container:not(:empty) {
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .chat-message {
@@ -43,4 +50,42 @@
   --padding-end: 1rem;
   --background: white;
   --border-radius: 1.5rem;
+}
+
+.suggestion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+}
+
+.suggestion-button {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 300px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.suggestion-button:hover {
+  background-color: #e0e0e0;
+}
+
+.suggestion-icon {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.suggestion-text {
+  text-align: left;
+  font-size: 0.9em;
+  color: #333;
 }
