@@ -1,10 +1,7 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, IonMenu, IonContent, IonList, IonItem, IonIcon, IonLabel, IonSplitPane, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { homeOutline, informationCircleOutline, alertCircleOutline, documentTextOutline, hardwareChipOutline, chatbubbleEllipsesOutline } from 'ionicons/icons';
-import HomePage from './pages/HomePage';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
+import { IonApp, IonContent, IonMenu, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, setupIonicReact } from '@ionic/react';
+import { closeOutline, menuOutline } from 'ionicons/icons';
+import { menuController } from '@ionic/core';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -24,64 +21,63 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/menu.css';
 
 setupIonicReact();
 
-const HomePageWrapper: React.FC = () => {
-  useEffect(() => {
-    console.log('HomePage component mounted');
-  }, []);
-
-  return <HomePage />;
-};
-
 const App: React.FC = () => {
-  useEffect(() => {
-    console.log('App component mounted');
-  }, []);
+  const [selectedPage, setSelectedPage] = useState('home');
+
+  const menuItems = [
+    { title: 'Home', route: '/home' },
+    { title: 'About', route: '/about' },
+    { title: 'Info', route: '/info' },
+    { title: 'Contact', route: '/contact' },
+  ];
+
+  const handleMenuItemClick = (route: string) => {
+    setSelectedPage(route.substring(1));
+    menuController.close();
+  };
 
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <IonMenu contentId="main">
-            <IonContent>
-              <IonList>
-                <IonItem routerLink="/home" routerDirection="none">
-                  <IonIcon icon={homeOutline} slot="start" />
-                  <IonLabel>My Summary</IonLabel>
-                </IonItem>
-                <IonItem button>
-                  <IonIcon icon={informationCircleOutline} slot="start" />
-                  <IonLabel>Account Information</IonLabel>
-                </IonItem>
-                <IonItem button>
-                  <IonIcon icon={alertCircleOutline} slot="start" />
-                  <IonLabel>BG levels & Alerts</IonLabel>
-                </IonItem>
-                <IonItem button>
-                  <IonIcon icon={documentTextOutline} slot="start" />
-                  <IonLabel>Export Report</IonLabel>
-                </IonItem>
-                <IonItem button>
-                  <IonIcon icon={hardwareChipOutline} slot="start" />
-                  <IonLabel>Devices</IonLabel>
-                </IonItem>
-                <IonItem button>
-                  <IonIcon icon={chatbubbleEllipsesOutline} slot="start" />
-                  <IonLabel>Report an Issue</IonLabel>
-                </IonItem>
-              </IonList>
-            </IonContent>
-          </IonMenu>
-          <IonRouterOutlet id="main">
-            <Route exact path="/home" render={() => <HomePageWrapper />} />
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
+      <IonMenu contentId="main" className="simple-menu" side="start" type="overlay">
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="end">
+              <IonButton onClick={() => menuController.close()}>
+                <IonIcon icon={closeOutline} />
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonList lines="none">
+            {menuItems.map((item, index) => (
+              <IonItem 
+                key={index} 
+                className={`menu-item ${selectedPage === item.route.substring(1) ? 'selected' : ''}`}
+                onClick={() => handleMenuItemClick(item.route)}
+              >
+                <IonLabel>{item.title}</IonLabel>
+              </IonItem>
+            ))}
+          </IonList>
+        </IonContent>
+      </IonMenu>
+      <IonContent id="main">
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonMenuButton>
+                <IonIcon icon={menuOutline} />
+              </IonMenuButton>
+            </IonButtons>
+            <IonTitle>{menuItems.find(item => item.route.substring(1) === selectedPage)?.title}</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+      </IonContent>
     </IonApp>
   );
 };

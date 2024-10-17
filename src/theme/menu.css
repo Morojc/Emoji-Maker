@@ -1,0 +1,150 @@
+.chatgpt-menu {
+  --background: #f7f7f8;
+  --width: 280px;
+}
+
+.chatgpt-menu ion-toolbar {
+  --background: #ffffff;
+  --color: #202123;
+  --border-color: #e5e5e5;
+}
+
+.chatgpt-menu ion-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.menu-header {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.menu-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.menu-item {
+  --background: transparent;
+  --color: #202123;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 48px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.menu-item.selected {
+  --background: #ececf1;
+  font-weight: 600;
+}
+
+.menu-item:hover {
+  --background: #ececf1;
+}
+
+.menu-item ion-icon {
+  color: #6e6e80;
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.menu-item ion-label {
+  font-weight: 400;
+}
+
+ion-menu-button {
+  --color: #202123;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+ion-menu-button::part(icon) {
+  font-size: 24px;
+}
+
+ion-toolbar {
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+/* Ensure the content doesn't overlap with the header */
+ion-router-outlet {
+  margin-top: 56px; /* Adjust this value based on your header height */
+}
+
+/* Add this to ensure the menu button is visible on all screen sizes */
+@media (min-width: 768px) {
+  ion-menu-button {
+    display: block !important;
+  }
+}
+
+.simple-menu {
+  --width: 80%;
+  --max-width: 300px;
+  --background: #ffffff;
+}
+
+.simple-menu ion-toolbar {
+  --background: transparent;
+  --border-color: transparent;
+}
+
+.simple-menu ion-button {
+  --color: #000000;
+  font-size: 24px;
+}
+
+.menu-item {
+  --background: transparent;
+  --color: #000000;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --min-height: 50px;
+  font-size: 18px;
+  font-weight: 400;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item.selected {
+  font-weight: 600;
+}
+
+ion-menu-button {
+  --color: #000000;
+}
+
+ion-toolbar {
+  --background: #ffffff;
+  --color: #000000;
+}
+
+/* Ensure the content doesn't overlap with the header */
+ion-router-outlet {
+  margin-top: 56px; /* Adjust this value based on your header height */
+}
+
+/* Add this to ensure the menu button is visible on all screen sizes */
+@media (min-width: 768px) {
+  ion-menu-button {
+    display: block !important;
+  }
+}
+
+ion-menu-button {
+  display: block !important;
+}
+
+ion-content#main {
+  --background: #ffffff;
+}
