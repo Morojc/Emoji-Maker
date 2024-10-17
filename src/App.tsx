@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonApp, IonContent, IonMenu, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonButton, IonIcon, IonFooter, IonInput, setupIonicReact } from '@ionic/react';
-import { closeOutline, menuOutline, sendOutline } from 'ionicons/icons';
+import { closeOutline, menuOutline, sendOutline, diamondOutline } from 'ionicons/icons';
 import { menuController } from '@ionic/core';
 
 /* Core CSS required for Ionic components to work properly */
@@ -80,7 +80,12 @@ const App: React.FC = () => {
                 <IonIcon icon={menuOutline} />
               </IonMenuButton>
             </IonButtons>
-            <IonTitle>{menuItems.find(item => item.route.substring(1) === selectedPage)?.title}</IonTitle>
+            <IonTitle className="ion-text-center">
+              <IonButton className="premium-button" size="small">
+                <IonIcon icon={diamondOutline} className="premium-icon" />
+                <span className="premium-text">Premium</span>
+              </IonButton>
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
       </IonContent>
