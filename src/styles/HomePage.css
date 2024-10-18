@@ -31,3 +31,118 @@ ion-menu {
 .menu-item.selected {
   --background: var(--ion-color-primary-tint);
 }
+
+.app-menu {
+  --width: 280px;
+  --max-width: 280px;
+  --background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.menu-header {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.menu-header h2 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.app-menu ion-content {
+  --background: transparent;
+}
+
+.app-menu ion-list {
+  background: transparent;
+  padding-top: 20px;
+}
+
+.app-menu .menu-item {
+  --background: transparent;
+  --color: #ffffff;
+  --border-radius: 0 25px 25px 0;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.app-menu .menu-item:hover {
+  --background: rgba(255, 255, 255, 0.1);
+}
+
+.app-menu .menu-item.selected {
+  --background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-menu .menu-item ion-icon {
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+.app-menu .menu-item ion-label {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.custom-menu-button {
+  --color: #6e8efb;
+}
+
+.custom-menu-button .menu-icon {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-menu-button .menu-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #6e8efb;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.custom-menu-button .menu-icon span:nth-child(1) {
+  top: 0;
+}
+
+.custom-menu-button .menu-icon span:nth-child(2) {
+  top: 8px;
+  width: 75%;
+}
+
+.custom-menu-button .menu-icon span:nth-child(3) {
+  top: 16px;
+}
+
+.custom-menu-button:hover .menu-icon span:nth-child(2) {
+  width: 100%;
+}
+
+@keyframes menuItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.app-menu ion-menu-toggle ion-item {
+  animation: menuItemFadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+  opacity: 0;
+}
+
+.app-menu ion-menu-toggle:nth-child(1) ion-item { --animation-order: 1; }
+.app-menu ion-menu-toggle:nth-child(2) ion-item { --animation-order: 2; }
+.app-menu ion-menu-toggle:nth-child(3) ion-item { --animation-order: 3; }
+.app-menu ion-menu-toggle:nth-child(4) ion-item { --animation-order: 4; }
+.app-menu ion-menu-toggle:nth-child(5) ion-item { --animation-order: 5; }
