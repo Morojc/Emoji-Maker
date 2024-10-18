@@ -1,0 +1,33 @@
+.home-page {
+  --ion-background-color: transparent;
+}
+
+.home-page ion-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.home-page ion-toolbar {
+  --background: transparent;
+  --border-color: transparent;
+}
+
+.home-page ion-content {
+  --padding-top: 56px; /* Adjust this value based on your header height */
+}
+
+.home-page .chat-container {
+  padding-top: 16px; /* Add some space between the header and chat content */
+}
+
+/* Add styles for the menu if needed */
+ion-menu {
+  --width: 250px;
+}
+
+.menu-item.selected {
+  --background: var(--ion-color-primary-tint);
+}
