@@ -1,3 +1,81 @@
+/* Add these styles at the beginning of the file */
+ion-app {
+  margin-top: 0 !important;
+}
+
+ion-menu.top-menu {
+  --width: 280px;
+  --max-width: 280px;
+  margin-top: 0 !important;
+}
+
+ion-menu.top-menu::part(container) {
+  border-right: 1px solid var(--ion-color-step-150, #d7d8da);
+}
+
+ion-menu.top-menu ion-header {
+  margin-top: 0 !important;
+}
+
+ion-menu.top-menu ion-toolbar {
+  --min-height: 56px;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --background: var(--ion-background-color, #ffffff);
+}
+
+/* Add these new styles */
+ion-menu.top-menu ion-header.ion-no-border {
+  height: 56px;
+}
+
+ion-menu.top-menu ion-header.ion-no-border::after {
+  display: none;
+}
+
+ion-menu.top-menu ion-toolbar {
+  --min-height: 56px;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  height: 56px;
+}
+
+ion-menu.top-menu ion-content {
+  --padding-top: 0;
+  --offset-top: 56px; /* This will push the content below the header */
+}
+
+/* Update the existing styles */
+ion-content {
+  --padding-top: 0;
+}
+
+.ion-page {
+  margin-top: 0 !important;
+}
+
+/* Rest of the existing styles... */
+
+/* Update the custom-menu-button styles */
+.custom-menu-button.creative-menu-button {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+/* Update the reset-button styles */
+.reset-button {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+/* ... (keep the rest of the existing styles) */
+
 .chatgpt-menu {
   --background: #f7f7f8;
   --width: 280px;
@@ -75,7 +153,7 @@ ion-toolbar {
 
 /* Ensure the content doesn't overlap with the header */
 ion-router-outlet {
-  margin-top: 56px; /* Adjust this value based on your header height */
+  margin-top: 0; /* Remove this margin */
 }
 
 /* Add this to ensure the menu button is visible on all screen sizes */
@@ -1083,3 +1161,99 @@ ion-page {
 .creative-menu-button:hover .menu-icon::after {
   opacity: 1;
 }
+
+.creative-menu {
+  --width: 280px;
+  --max-width: 280px;
+  --background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.creative-menu ion-header {
+  --background: transparent;
+}
+
+.creative-menu ion-toolbar {
+  --background: transparent;
+  --color: #ffffff;
+}
+
+.creative-menu ion-title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.creative-menu ion-content {
+  --background: transparent;
+  --padding-top: 20px; /* Add some padding at the top of the content */
+}
+
+.creative-menu ion-list {
+  background: transparent;
+  padding-top: 20px;
+}
+
+.creative-menu .menu-item {
+  --background: transparent;
+  --color: #ffffff;
+  margin-bottom: 10px;
+  border-radius: 0 25px 25px 0;
+  transition: all 0.3s ease;
+}
+
+.creative-menu .menu-item.selected {
+  --background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.creative-menu .menu-item ion-icon {
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+.creative-menu .menu-item ion-label {
+  font-weight: 500;
+}
+
+.creative-menu .menu-item:hover {
+  --background: rgba(255, 255, 255, 0.1);
+}
+
+ion-menu-button {
+  --color: #ffffff;
+}
+
+/* Ensure the content doesn't overlap with the header */
+ion-router-outlet {
+  margin-top: 0;
+}
+
+/* Add this to ensure the menu button is visible on all screen sizes */
+@media (min-width: 768px) {
+  ion-menu-button {
+    display: block !important;
+  }
+}
+
+/* Animation for menu items */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.creative-menu .menu-item {
+  animation: slideIn 0.3s ease-out forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+  opacity: 0;
+}
+
+/* Add animation order to menu items */
+.creative-menu .menu-item:nth-child(1) { --animation-order: 1; }
+.creative-menu .menu-item:nth-child(2) { --animation-order: 2; }
+.creative-menu .menu-item:nth-child(3) { --animation-order: 3; }
+.creative-menu .menu-item:nth-child(4) { --animation-order: 4; }
