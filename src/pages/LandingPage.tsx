@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonPage, IonContent, IonButton } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
 
 const LandingPage: React.FC = () => {
   const history = useHistory();
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleTryForFree = () => {
-    history.push('/home');
+    setIsAnimating(true);
+    setTimeout(() => {
+      history.push('/home');
+    }, 3000);
   };
 
   return (
@@ -34,6 +38,16 @@ const LandingPage: React.FC = () => {
             </p>
           </footer>
         </div>
+        {isAnimating && (
+          <div className="ai-animation">
+            <div className="neural-network">
+              {[...Array(20)].map((_, i) => (
+                <div key={i} className="node"></div>
+              ))}
+            </div>
+            <div className="data-stream"></div>
+          </div>
+        )}
       </IonContent>
     </IonPage>
   );

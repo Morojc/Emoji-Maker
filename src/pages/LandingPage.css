@@ -317,3 +317,106 @@ footer {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.ai-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 25, 47, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.neural-network {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #64ffda;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite alternate;
+}
+
+.node:nth-child(even) {
+  background-color: #00bfff;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 1; }
+}
+
+.data-stream {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #64ffda, transparent);
+  animation: dataFlow 2s linear infinite;
+}
+
+@keyframes dataFlow {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.ai-text {
+  position: absolute;
+  bottom: 20%;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.ready-text {
+  display: inline-block;
+  background: linear-gradient(45deg, #64ffda, #00bfff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.blinking-cursor {
+  color: #64ffda;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(100, 255, 218, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(100, 255, 218, 0.8), 0 0 35px rgba(100, 255, 218, 0.6);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Randomly position nodes */
+.node:nth-child(1) { top: 10%; left: 20%; }
+.node:nth-child(2) { top: 30%; left: 50%; }
+.node:nth-child(3) { top: 50%; left: 80%; }
+.node:nth-child(4) { top: 70%; left: 30%; }
+.node:nth-child(5) { top: 90%; left: 60%; }
+/* ... add more node positions as needed ... */
