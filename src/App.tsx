@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { IonApp, IonRouterOutlet, setupIonicReact, IonSplitPane, IonMenu, IonHeader, IonToolbar, IonContent, IonList, IonItem, IonLabel, IonButtons, IonButton, IonIcon } from '@ionic/react';
+import React from 'react';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import { closeOutline, homeOutline, informationCircleOutline, mailOutline, peopleOutline } from 'ionicons/icons';
-import { menuController } from '@ionic/core';
+import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -29,55 +28,14 @@ import './theme/menu.css';
 setupIonicReact();
 
 const App: React.FC = () => {
-  const [selectedPage, setSelectedPage] = useState('home');
-
-  const menuItems = [
-    { title: 'Home', route: '/home', icon: homeOutline },
-    { title: 'About', route: '/about', icon: informationCircleOutline },
-    { title: 'Info', route: '/info', icon: peopleOutline },
-    { title: 'Contact', route: '/contact', icon: mailOutline },
-  ];
-
-  const handleMenuItemClick = (route: string) => {
-    setSelectedPage(route.substring(1));
-    menuController.close();
-  };
-
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <IonMenu contentId="main" type="overlay" className="creative-menu">
-            <IonHeader className="ion-no-border">
-              <IonToolbar>
-                <IonButtons slot="end">
-                  <IonButton onClick={() => menuController.close()}>
-                    <IonIcon icon={closeOutline} />
-                  </IonButton>
-                </IonButtons>
-              </IonToolbar>
-            </IonHeader>
-            <IonContent>
-              <IonList lines="none">
-                {menuItems.map((item, index) => (
-                  <IonItem 
-                    key={index} 
-                    className={`menu-item ${selectedPage === item.route.substring(1) ? 'selected' : ''}`}
-                    onClick={() => handleMenuItemClick(item.route)}
-                  >
-                    <IonIcon icon={item.icon} slot="start" />
-                    <IonLabel>{item.title}</IonLabel>
-                  </IonItem>
-                ))}
-              </IonList>
-            </IonContent>
-          </IonMenu>
-
-          <IonRouterOutlet id="main">
-            <Route path="/home" component={HomePage} exact={true} />
-            <Route exact path="/" render={() => <Redirect to="/home" />} />
-          </IonRouterOutlet>
-        </IonSplitPane>
+        <IonRouterOutlet>
+          <Route path="/landing" component={LandingPage} exact={true} />
+          <Route path="/home" component={HomePage} exact={true} />
+          <Route exact path="/" render={() => <Redirect to="/landing" />} />
+        </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
   );
