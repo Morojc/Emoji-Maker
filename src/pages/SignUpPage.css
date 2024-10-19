@@ -104,45 +104,15 @@ h1 {
 }
 
 .divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 15px 0;
-  width: 100%;
-  max-width: 300px;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.divider span {
-  padding: 0 10px;
-  color: #999;
-  font-size: 11px;
+  display: none;
 }
 
 .social-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 15px;
+  display: none;
 }
 
 .social-button {
-  --padding-start: 0;
-  --padding-end: 0;
-  --background: #f5f5f5;
-  --border-radius: 50%;
-  width: 35px;
-  height: 35px;
-}
-
-.social-button ion-icon {
-  font-size: 18px;
+  display: none;
 }
 
 .google ion-icon {
@@ -158,10 +128,14 @@ h1 {
 }
 
 .login-link {
-  font-size: 12px;
-  color: #999;
+  font-size: 14px;
+  color: #000000;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 30px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
 }
 
 .login-link a {
@@ -275,4 +249,33 @@ h1 {
 
 :root {
   --accent-color: #ffc107;
+}
+
+/* Add this new style for the Gmail button */
+.gmail-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: #ffffff;
+  color: #757575;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gmail-button:hover {
+  background: #f5f5f5;
+}
+
+.gmail-button ion-icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #DB4437;
 }

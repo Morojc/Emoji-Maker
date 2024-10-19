@@ -6,7 +6,7 @@ import {
   IonButton,
   IonIcon,
 } from '@ionic/react';
-import { logoGoogle, logoFacebook, logoTwitter, arrowForward } from 'ionicons/icons';
+import { logoGoogle, arrowForward } from 'ionicons/icons';
 import './SignUpPage.css';
 
 const SignUpPage: React.FC = () => {
@@ -81,27 +81,17 @@ const SignUpPage: React.FC = () => {
               <IonIcon icon={arrowForward} />
             </button>
           </form>
+          <button className="gmail-button">
+            <IonIcon icon={logoGoogle} />
+            <span>Sign up with Gmail</span>
+          </button>
           <p className="terms">
             By signing up, you agree to our <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
           </p>
-          <div className="divider">
-            <span>or</span>
-          </div>
-          <div className="social-buttons">
-            <IonButton fill="clear" className="social-button google">
-              <IonIcon icon={logoGoogle} />
-            </IonButton>
-            <IonButton fill="clear" className="social-button facebook">
-              <IonIcon icon={logoFacebook} />
-            </IonButton>
-            <IonButton fill="clear" className="social-button twitter">
-              <IonIcon icon={logoTwitter} />
-            </IonButton>
-          </div>
-          <p className="login-link">
-            Already have an account? <a href="/login">Login</a>
-          </p>
         </div>
+        <p className="login-link">
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </IonContent>
     </IonPage>
   );
