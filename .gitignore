@@ -32,3 +32,9 @@ yarn-error.log*
 
 # ionic instructions
 /instructions/*
+
+# firebase
+firebaseConfig.js
+authService.js
+google-services.json
+google-services (1).json

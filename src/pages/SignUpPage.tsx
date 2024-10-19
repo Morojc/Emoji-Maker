@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signup  } from '../authService';
 import {
   IonContent,
   IonPage,
@@ -8,16 +9,31 @@ import {
 } from '@ionic/react';
 import { logoGoogle, arrowForward } from 'ionicons/icons';
 import './SignUpPage.css';
+import { useHistory } from 'react-router-dom';
 
 const SignUpPage: React.FC = () => {
+    
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useHistory();
 
-  const handleSignUp = (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Sign up with', name, email, password);
-    // Handle sign up logic here
+    setError(''); // Clear any previous errors
+    try {
+      await signup(email, password);
+      navigate.push('/home');
+      console.log('Successfully signed up', email);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unknown error occurred');
+      }
+      console.error('Signup error:', err);
+    }
   };
 
   return (
