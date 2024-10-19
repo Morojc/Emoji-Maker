@@ -1,0 +1,278 @@
+.signup-page {
+  --background: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.signup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 300px;
+  margin-left: 5%;
+}
+
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  background-color: #ffc107;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.signup-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form ion-input {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-bottom: 8px;
+  --placeholder-color: #999;
+  --placeholder-opacity: 1;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 15px;
+  transition: border-bottom-color 0.3s ease;
+  font-size: 14px;
+}
+
+.signup-form ion-input:focus {
+  border-bottom-color: #ffc107;
+}
+
+.signup-button {
+  --background: #ffc107;
+  --color: #000000;
+  --border-radius: 5px;
+  margin-top: 20px;
+}
+
+.signup-button:hover {
+  --background: #ffca28;
+  --color: #000000;
+}
+
+.terms {
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.terms a {
+  color: #ffc107;
+  text-decoration: none;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
+  width: 100%;
+  max-width: 300px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.divider span {
+  padding: 0 10px;
+  color: #999;
+  font-size: 11px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.social-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: #f5f5f5;
+  --border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
+
+.social-button ion-icon {
+  font-size: 18px;
+}
+
+.google ion-icon {
+  color: #db4437;
+}
+
+.facebook ion-icon {
+  color: #4267B2;
+}
+
+.twitter ion-icon {
+  color: #1DA1F2;
+}
+
+.login-link {
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #ffc107;
+  text-decoration: none;
+}
+
+.creative-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: var(--accent-color);
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.creative-button span {
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.creative-button ion-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.creative-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--accent-color), #ff9800);
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.creative-button:hover::before {
+  left: 0;
+}
+
+.creative-button:hover span,
+.creative-button:hover ion-icon {
+  transform: translateX(5px);
+}
+
+.ai-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 30px;
+}
+
+.ai-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.ai-logo #orbits {
+  animation: rotate 20s linear infinite;
+}
+
+.ai-logo #dots {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.signup-title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: bold;
+  width: 100%;
+}
+
+.terms, .divider, .social-buttons, .login-link {
+  align-self: flex-start;
+  width: 100%;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 400px) {
+  .signup-content {
+    margin-left: 2.5%;
+    max-width: 95%;
+  }
+}
+
+:root {
+  --accent-color: #ffc107;
+}

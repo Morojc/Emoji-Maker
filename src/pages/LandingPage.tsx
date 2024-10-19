@@ -11,7 +11,7 @@ const LandingPage: React.FC = () => {
   const handleTryForFree = () => {
     setIsAnimating(true);
     setTimeout(() => {
-      history.push('/home');
+      history.push('/signup');
     }, 1500);
   };
 
@@ -109,7 +109,27 @@ const LandingPage: React.FC = () => {
       <IonContent fullscreen>
         <div className="content-container">
           <header>
-            <div className="logo">Lando</div>
+            <div className="logo">
+              <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="24" fill="#ffc107" opacity="0.2" />
+                <circle cx="25" cy="25" r="19" fill="#ffc107" opacity="0.4" />
+                <circle cx="25" cy="25" r="5" fill="#ffffff" />
+                <circle cx="25" cy="25" r="2.5" fill="#ffc107" />
+                <g id="orbits">
+                  <circle cx="25" cy="25" r="15" fill="none" stroke="#ffc107" strokeWidth="0.5" />
+                  <circle cx="25" cy="25" r="11" fill="none" stroke="#ffc107" strokeWidth="0.5" />
+                </g>
+                <g id="dots">
+                  <circle cx="40" cy="25" r="1" fill="#ffc107" />
+                  <circle cx="36" cy="36" r="1" fill="#ffc107" />
+                  <circle cx="25" cy="40" r="1" fill="#ffc107" />
+                  <circle cx="14" cy="36" r="1" fill="#ffc107" />
+                  <circle cx="10" cy="25" r="1" fill="#ffc107" />
+                </g>
+              </svg>
+              <span className="logo-text">Nexus</span>
+              <span className="logo-ai">AI</span>
+            </div>
           </header>
           <main>
             <div className="top-content">

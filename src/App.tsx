@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
+import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -27,18 +28,17 @@ import './theme/menu.css';
 
 setupIonicReact();
 
-const App: React.FC = () => {
-  return (
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path="/landing" component={LandingPage} exact={true} />
-          <Route path="/home" component={HomePage} exact={true} />
-          <Route exact path="/" render={() => <Redirect to="/landing" />} />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
-  );
-};
+const App: React.FC = () => (
+  <IonApp>
+    <IonReactRouter>
+      <IonRouterOutlet>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/signup" component={SignUpPage} />
+        <Route exact path="/home" component={HomePage} />
+        <Redirect to="/" />
+      </IonRouterOutlet>
+    </IonReactRouter>
+  </IonApp>
+);
 
 export default App;
